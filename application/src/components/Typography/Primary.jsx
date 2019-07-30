@@ -16,26 +16,24 @@
 
 */
 import React from "react";
-import ReactDOM from "react-dom";
-import { createBrowserHistory } from "history";
-import { Router, Route, Switch, Redirect } from "react-router-dom";
-import "index.css"
-
+import PropTypes from "prop-types";
+// @material-ui/core components
+import withStyles from "@material-ui/core/styles/withStyles";
 // core components
-import Dashboard from "layouts/dashboard.jsx";
-import Login from "layouts/login";
+import typographyStyle from "assets/jss/material-dashboard-react/components/typographyStyle.jsx";
 
-import "assets/css/material-dashboard-react.css?v=1.7.0";
+function Primary({ ...props }) {
+  const { classes, children } = props;
+  return (
+    <div className={classes.defaultFontStyle + " " + classes.primaryText}>
+      {children}
+    </div>
+  );
+}
 
-const hist = createBrowserHistory();
+Primary.propTypes = {
+  classes: PropTypes.object.isRequired,
+  children: PropTypes.node
+};
 
-ReactDOM.render(
-  <Router history={hist}>
-    <Switch>
-      <Route path="/app" component={Dashboard} />
-      <Route path="/ingreso" component={Login} />
-      <Redirect from="/" to="/app/dashboard" />
-    </Switch>
-  </Router>,
-  document.getElementById("root")
-);
+export default withStyles(typographyStyle)(Primary);

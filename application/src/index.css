@@ -11,3 +11,120 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
 }
+
+
+/*-----------------LOGIN-----------------*/
+
+.section-login{
+  width: 100%;
+  height: 100%;
+  min-height: 100vh;
+  background-color: #2b86ec;
+}
+
+.login-container {
+  padding: 0 10px;
+}
+
+.section-login-container {
+  height: 100%;
+  margin: 0 auto;
+  max-width: 640px;
+  overflow-x: hidden;
+  padding-bottom: 25px;
+  position: relative;
+  width: auto;
+}
+
+@media (min-width: 40em) {
+  .section-login-container {
+      overflow-x: visible;
+  }
+}
+
+.login-header {
+  padding: 80px 0;
+}
+
+.section-login-container h1{
+  color: white;
+  text-align: center;
+  font-size: 3em;
+}
+
+.login-body {
+  position: relative;
+}
+
+.text-input-login-container {
+  border-radius: 3px;
+  box-shadow: 0 2px 1px rgba(0, 0, 0, 0.05);
+  overflow: hidden;
+}
+
+.text-input-login-container input {
+  background-color: white;
+  border: 0;
+  border-bottom: 1px solid #cccccc;
+  border-radius: 0;
+  color: #404040;
+  display: block;
+  font-size: 1.3125em;
+  height: 55px;
+  letter-spacing: .025em;
+  outline: 0;
+  padding: 0 15px;
+  vertical-align: middle;
+  width: 100%;
+  background-image: url('data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiPz4gPHN2ZyB2ZXJzaW9uPSIxLjEiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PGRlZnM+PGxpbmVhckdyYWRpZW50IGlkPSJncmFkIiBncmFkaWVudFVuaXRzPSJvYmplY3RCb3VuZGluZ0JveCIgeDE9IjAuMCIgeTE9IjAuNSIgeDI9IjEuMCIgeTI9IjAuNSI+PHN0b3Agb2Zmc2V0PSIwJSIgc3RvcC1jb2xvcj0iI2ZmZmZmZiIvPjxzdG9wIG9mZnNldD0iMTAwJSIgc3RvcC1jb2xvcj0iI2Y1ZjVmNSIvPjwvbGluZWFyR3JhZGllbnQ+PC9kZWZzPjxyZWN0IHg9IjAiIHk9IjAiIHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiIGZpbGw9InVybCgjZ3JhZCkiIC8+PC9zdmc+IA==');
+  background-size: 100%;
+  background-image: -webkit-gradient(linear, 0% 50%, 100% 50%, color-stop(0%, #ffffff), color-stop(100%, #f5f5f5));
+  background-image: -moz-linear-gradient(left, #ffffff, #f5f5f5);
+  background-image: -webkit-linear-gradient(left, #ffffff, #f5f5f5);
+  background-image: linear-gradient(to right, #ffffff, #f5f5f5);
+}
+
+.text-input-login-container input:last-child {
+  border-bottom: 0;
+}
+
+.section-login-container button,
+.section-login-container input[type=submit] {
+  background-color: #e9f3fd;
+  border: 0;
+  border-radius: 3px;
+  box-shadow: 0 2px 1px rgba(0, 0, 0, 0.05), inset 0 -1px 0 white;
+  color: #2b86ec;
+  display: block;
+  font-weight: bold;
+  margin: 20px 0;
+  outline: 0;
+  padding: 17px 0 15px;
+  width: 100%;
+  background-image: url('data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiPz4gPHN2ZyB2ZXJzaW9uPSIxLjEiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PGRlZnM+PGxpbmVhckdyYWRpZW50IGlkPSJncmFkIiBncmFkaWVudFVuaXRzPSJvYmplY3RCb3VuZGluZ0JveCIgeDE9IjAuNSIgeTE9IjAuMCIgeDI9IjAuNSIgeTI9IjEuMCI+PHN0b3Agb2Zmc2V0PSIwJSIgc3RvcC1jb2xvcj0iI2ZmZmZmZiIvPjxzdG9wIG9mZnNldD0iMTAwJSIgc3RvcC1jb2xvcj0iI2ZmZmZmZiIgc3RvcC1vcGFjaXR5PSIwLjAiLz48L2xpbmVhckdyYWRpZW50PjwvZGVmcz48cmVjdCB4PSIwIiB5PSIwIiB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIiBmaWxsPSJ1cmwoI2dyYWQpIiAvPjwvc3ZnPiA=');
+  background-size: 100%;
+  background-image: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #ffffff), color-stop(100%, rgba(255, 255, 255, 0)));
+  background-image: -moz-linear-gradient(#ffffff, rgba(255, 255, 255, 0));
+  background-image: -webkit-linear-gradient(#ffffff, rgba(255, 255, 255, 0));
+  background-image: linear-gradient(#ffffff, rgba(255, 255, 255, 0));
+  -moz-transition: background-color 150ms ease-out, box-shadow 100ms ease-out, padding 80ms ease-out;
+  -o-transition: background-color 150ms ease-out, box-shadow 100ms ease-out, padding 80ms ease-out;
+  -webkit-transition: background-color 150ms ease-out, box-shadow 100ms ease-out, padding 80ms ease-out;
+  transition: background-color 150ms ease-out, box-shadow 100ms ease-out, padding 80ms ease-out;
+  -moz-transform: translateZ(0);
+  -webkit-transform: translateZ(0);
+  transform: translateZ(0);
+  cursor: pointer;
+}
+
+.section-login-container button:focus,
+.section-login-container button:hover,
+.section-login-container input[type=submit]:focus,
+.section-login-container input[type=submit]:hover {
+  background-color: white;
+}
+
+.section-login-container button:login-active,
+.section-login-container input[type=submit]:login-active {
+  box-shadow: 0 2px 1px transparent, inset 0 -1px 0 white;
+}

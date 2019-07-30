@@ -1,1 +1,0 @@
-Reemplazar por proyecto de landing page
