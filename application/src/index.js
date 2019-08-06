@@ -19,11 +19,14 @@ import React from "react";
 import ReactDOM from "react-dom";
 import { createBrowserHistory } from "history";
 import { Router, Route, Switch, Redirect } from "react-router-dom";
-import "index.css"
+import { NotificationContainer } from "react-notifications";
+import "index.css";
+import "react-notifications/lib/notifications.css";
 
 // core components
-import Dashboard from "layouts/dashboard.jsx";
-import Login from "layouts/login";
+import App from "pages/app";
+import Login from "pages/login";
+import Register from "pages/register";
 
 import "assets/css/material-dashboard-react.css?v=1.7.0";
 
@@ -32,10 +35,12 @@ const hist = createBrowserHistory();
 ReactDOM.render(
   <Router history={hist}>
     <Switch>
-      <Route path="/app" component={Dashboard} />
+      <Route path="/app" component={App} />
       <Route path="/ingreso" component={Login} />
-      <Redirect from="/" to="/app/dashboard" />
+      <Route path="/registro" component={Register} />
+      <Redirect from="/" to="/ingreso" />
     </Switch>
+    <NotificationContainer />
   </Router>,
   document.getElementById("root")
 );

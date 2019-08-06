@@ -57,8 +57,6 @@ const cardHeaderStyle = {
       margin: "10px 10px 4px"
     },
     "&$cardHeaderStats i,&$cardHeaderStats .material-icons": {
-      fontSize: "36px",
-      lineHeight: "56px",
       width: "56px",
       height: "56px",
       textAlign: "center",

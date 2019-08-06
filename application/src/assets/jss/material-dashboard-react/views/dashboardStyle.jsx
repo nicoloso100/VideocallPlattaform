@@ -51,12 +51,27 @@ const dashboardStyle = {
       marginLeft: "3px"
     }
   },
+  addSession: {
+    display: "flex",
+    height: "50px",
+    "& div": {
+      display: "flex",
+      alignItems: "center",
+      width: "210px",
+      justifyContent: "space-between",
+      cursor: "pointer",
+      transitionDuration: "0.2s"
+    },
+    "& div:hover": {
+      color: "#878787"
+    }
+  },
   cardCategory: {
     color: grayColor[0],
     margin: "0",
     fontSize: "14px",
     marginTop: "0",
-    paddingTop: "10px",
+    paddingTop: "40px",
     marginBottom: "0"
   },
   cardCategoryWhite: {
