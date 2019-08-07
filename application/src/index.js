@@ -29,16 +29,18 @@ import Login from "pages/login";
 import Register from "pages/register";
 
 import "assets/css/material-dashboard-react.css?v=1.7.0";
+import { VideoCall } from "videocall/app";
 
 const hist = createBrowserHistory();
 
 ReactDOM.render(
   <Router history={hist}>
     <Switch>
+      <Route path="/video" component={VideoCall} />
       <Route path="/app" component={App} />
       <Route path="/ingreso" component={Login} />
       <Route path="/registro" component={Register} />
-      <Redirect from="/" to="/ingreso" />
+      <Redirect from="/" to="/video" />
     </Switch>
     <NotificationContainer />
   </Router>,
