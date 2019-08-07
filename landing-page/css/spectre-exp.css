@@ -753,7 +753,6 @@
 
 .parallax .parallax-top-left:focus ~ .parallax-content::before,
 .parallax .parallax-top-left:hover ~ .parallax-content::before {
-  background: linear-gradient(135deg, rgba(255, 255, 255, .35) 0%, transparent 50%);
 }
 
 .parallax .parallax-top-left:focus ~ .parallax-content .parallax-front,
@@ -778,7 +777,6 @@
 
 .parallax .parallax-top-right:focus ~ .parallax-content::before,
 .parallax .parallax-top-right:hover ~ .parallax-content::before {
-  background: linear-gradient(-135deg, rgba(255, 255, 255, .35) 0%, transparent 50%);
 }
 
 .parallax .parallax-top-right:focus ~ .parallax-content .parallax-front,
@@ -803,7 +801,6 @@
 
 .parallax .parallax-bottom-left:focus ~ .parallax-content::before,
 .parallax .parallax-bottom-left:hover ~ .parallax-content::before {
-  background: linear-gradient(45deg, rgba(255, 255, 255, .35) 0%, transparent 50%);
 }
 
 .parallax .parallax-bottom-left:focus ~ .parallax-content .parallax-front,
@@ -828,7 +825,6 @@
 
 .parallax .parallax-bottom-right:focus ~ .parallax-content::before,
 .parallax .parallax-bottom-right:hover ~ .parallax-content::before {
-  background: linear-gradient(-45deg, rgba(255, 255, 255, .35) 0%, transparent 50%);
 }
 
 .parallax .parallax-bottom-right:focus ~ .parallax-content .parallax-front,
@@ -866,7 +862,7 @@
 
 .progress:indeterminate {
   animation: progress-indeterminate 1.5s linear infinite;
-  background: #f0f1f4 linear-gradient(to right, #5755d9 30%, #f0f1f4 30%) top left/150% 150% no-repeat;
+  background: #f0f1f4 linear-gradient(left, #5755d9 30%, #f0f1f4 30%) top left/150% 150% no-repeat;
 }
 
 .progress:indeterminate::-moz-progress-bar {

@@ -1,12 +1,12 @@
 import React, { Component } from "react";
 import _ from "lodash";
-import socket from "./socket";
-import PeerConnection from "./PeerConnection";
-import MainWindow from "./MainWindow";
-import CallWindow from "./CallWindow";
-import CallModal from "./CallModal";
+import socket from "../../utils/utilsVideoCall/socket";
+import PeerConnection from "../../utils/utilsVideoCall/PeerConnection";
+import MainWindow from "../../components/videoCall/MainWindow";
+import CallWindow from "../../components/videoCall/CallWindow";
+import CallModal from "../../components/videoCall/CallModal";
 
-import "../css/app.scss";
+import "css/app.scss";
 
 export class VideoCall extends Component {
   constructor(props) {
@@ -29,7 +29,6 @@ export class VideoCall extends Component {
   componentDidMount() {
     socket
       .on("init", data => {
-        console.log(data);
         this.setState({ clientId: data.id });
       })
       .on("request", data =>

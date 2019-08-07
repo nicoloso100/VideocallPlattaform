@@ -40,6 +40,8 @@ var cors = require("cors");
 
 const app = express();
 
+app.use('/', express.static(`${process.cwd()}/../application/build`));
+
 var server = app.listen(5000);
 socket(server);
 console.log(`Server is listening at :${5000}`);

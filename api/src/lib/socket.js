@@ -4,8 +4,8 @@ const users = require("./users");
 function initSocket(socket) {
   let id;
   socket
-    .on("init", async () => {
-      id = await users.create(socket);
+    .on("init", () => {
+      id = users.create(socket);
       socket.emit("init", { id });
     })
     .on("request", data => {

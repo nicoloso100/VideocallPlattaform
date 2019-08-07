@@ -18,9 +18,11 @@
 // @material-ui/icons
 import Dashboard from "@material-ui/icons/Dashboard";
 import Person from "@material-ui/icons/Person";
+import Video from "@material-ui/icons/VideoCall";
 // core components/views for Admin layout
 import DashboardPage from "views/Dashboard/Dashboard.jsx";
 import UserProfile from "views/Historial/HistorialMedico.jsx";
+import { VideoCall } from "views/VideoCall/VideoCall";
 const dashboardRoutes = [
   {
     path: "/inicio",
@@ -34,6 +36,13 @@ const dashboardRoutes = [
     name: "Historial Médico",
     icon: Person,
     component: UserProfile,
+    layout: "/app"
+  },
+  {
+    path: "/video",
+    name: "Iniciar llamada",
+    icon: Video,
+    component: VideoCall,
     layout: "/app"
   }
 ];

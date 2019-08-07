@@ -1,20 +1,9 @@
-/* eslint-disable no-await-in-loop */
-const haiku = require('./haiku');
-
 const users = {};
+var newId = 0;
 
-// Random ID until the ID is not in use
-async function randomID() {
-  let id = haiku();
-  while (id in users) {
-    await Promise.delay(5);
-    id = haiku();
-  }
-  return id;
-}
-
-exports.create = async (socket) => {
-  const id = await randomID();
+exports.create = (socket) => {
+  newId = newId + 1;
+  const id = newId.toString();
   users[id] = socket;
   return id;
 };

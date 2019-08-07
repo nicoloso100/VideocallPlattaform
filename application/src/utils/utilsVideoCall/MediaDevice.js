@@ -17,6 +17,7 @@ class MediaDevice extends Emitter {
       audio: true
     };
 
+    console.log(navigator);
     navigator.mediaDevices
       .getUserMedia(constraints)
       .then((stream) => {
