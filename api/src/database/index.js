@@ -4,9 +4,9 @@ const knexDb = knex({
 
     connection: {
         host: '127.0.0.1',
-        user: 'postgres',
+        user: 'pasapp',
         password: 'nicky246',
-        database: 'jwt_test'
+        database: 'pasapp'
     },
     pool: {
         min: 0,
@@ -18,8 +18,4 @@ const securePassword = require('bookshelf-secure-password');
 const db = bookshelf(knexDb);
 db.plugin(securePassword);
 
-<<<<<<< HEAD
 module.exports = db;
-=======
-module.exports = db;
->>>>>>> origin/dev_sesion_token

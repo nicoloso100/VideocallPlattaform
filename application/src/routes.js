@@ -18,17 +18,11 @@
 // @material-ui/icons
 import Dashboard from "@material-ui/icons/Dashboard";
 import Person from "@material-ui/icons/Person";
-<<<<<<< HEAD
 import Video from "@material-ui/icons/VideoCall";
 // core components/views for Admin layout
 import DashboardPage from "views/Dashboard/Dashboard.jsx";
 import UserProfile from "views/Historial/HistorialMedico.jsx";
 import StartVideocall from "views/StartVideocall/startVideocall";
-=======
-// core components/views for Admin layout
-import DashboardPage from "views/Dashboard/Dashboard.jsx";
-import UserProfile from "views/Historial/HistorialMedico.jsx";
->>>>>>> origin/dev_sesion_token
 const dashboardRoutes = [
   {
     path: "/inicio",
@@ -43,7 +37,6 @@ const dashboardRoutes = [
     icon: Person,
     component: UserProfile,
     layout: "/app"
-<<<<<<< HEAD
   },
   {
     path: "/llamada",
@@ -51,8 +44,6 @@ const dashboardRoutes = [
     icon: Video,
     component: StartVideocall,
     layout: "/app"
-=======
->>>>>>> origin/dev_sesion_token
   }
 ];
 

@@ -16,10 +16,6 @@ class ContactWizard extends Component {
 
   sendWhatsapp = () => {
     let text = this.state.text.replace(" ", "%");
-<<<<<<< HEAD
-=======
-    console.log(text);
->>>>>>> origin/dev_sesion_token
     window.open(
       `https://api.whatsapp.com/send?phone=573203698165&text=${text}`,
       "_blank"
