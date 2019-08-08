@@ -1,10 +1,6 @@
 nodeMailer = require("nodemailer");
 
-<<<<<<< HEAD
 exports.send_email = (req, res) => {
-=======
-exports.send_email = function(req, res) {
->>>>>>> origin/dev_sesion_token
   var formulario = req.body;
   let transporter = nodeMailer.createTransport({
     host: "smtp.gmail.com",

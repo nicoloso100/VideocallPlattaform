@@ -22,18 +22,18 @@ class FormWizard extends Component {
       if (email === emailConfirmacion) {
         NotificationManager.info("Enviando mensaje...");
         axios
-          .post("http://localhost:4000/sendMail", {
+          .post("http://localhost:5000/api/sendMail", {
             email: email,
             nombre: nombre,
             telefono: telefono
           })
-          .then(function(response) {
+          .then(function (response) {
             NotificationManager.success(
               "Tus datos han sido enviados satisfactoriamente"
             );
             that.props.nextStep();
           })
-          .catch(function(error) {
+          .catch(function (error) {
             NotificationManager.error(
               "Ha ocurrido un error al enviar el formulario"
             );

@@ -4,9 +4,9 @@ const knexDb = knex({
 
     connection: {
         host: '127.0.0.1',
-        user: 'pasapp',
+        user: 'psapp',
         password: 'nicky246',
-        database: 'pasapp'
+        database: 'psapp'
     },
     pool: {
         min: 0,

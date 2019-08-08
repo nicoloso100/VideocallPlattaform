@@ -67,7 +67,7 @@
   }
   
   .section-login-container button,
-  .section-login-container input[type="submit"] {
+  .section-login-container .login-buttons {
     background-color: #e9f3fd;
     border: 0;
     border-radius: 3px;
@@ -97,13 +97,13 @@
   
   .section-login-container button:focus,
   .section-login-container button:hover,
-  .section-login-container input[type="submit"]:focus,
-  .section-login-container input[type="submit"]:hover {
+  .section-login-container .login-buttons:focus,
+  .section-login-container .login-buttons:hover {
     background-color: white;
   }
   
   .section-login-container button:login-active,
-  .section-login-container input[type="submit"]:login-active {
+  .section-login-container .login-buttons:login-active {
     box-shadow: 0 2px 1px transparent, inset 0 -1px 0 white;
   }
   

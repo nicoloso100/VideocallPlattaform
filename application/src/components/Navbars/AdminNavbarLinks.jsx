@@ -34,7 +34,7 @@ import Person from "@material-ui/icons/Person";
 import Notifications from "@material-ui/icons/Notifications";
 // core components
 import Button from "components/CustomButtons/Button.jsx";
-
+import { Route } from "react-router-dom";
 import headerLinksStyle from "assets/jss/material-dashboard-react/components/headerLinksStyle.jsx";
 
 class AdminNavbarLinks extends React.Component {
@@ -55,13 +55,14 @@ class AdminNavbarLinks extends React.Component {
     this.setState(state => ({ openProfile: !state.openProfile }));
   };
   handleCloseProfile = event => {
-    if (this.anchorProfile.contains(event.target)) {
-      localStorage.removeItem('example-jwt-jwt');
-      this.props.history.push('/login');
-      return;
-    }
     this.setState({ openProfile: false });
   };
+
+  closeSession = history => {
+    localStorage.removeItem('example-jwt-jwt');
+    history.push("/ingreso");
+  }
+
   render() {
     const { classes } = this.props;
     const { openNotifcation, openProfile } = this.state;
@@ -190,18 +191,22 @@ class AdminNavbarLinks extends React.Component {
                   <ClickAwayListener onClickAway={this.handleCloseProfile}>
                     <MenuList role="menu">
                       <MenuItem
-                        onClick={this.handleCloseProfile}
                         className={classes.dropdownItem}
                       >
                         Configuración
                       </MenuItem>
                       <Divider light />
-                      <MenuItem
-                        onClick={this.handleCloseProfile}
-                        className={classes.dropdownItem}
-                      >
-                        Cerrar sesión
-                      </MenuItem>
+
+                      <Route
+                        render={({ history }) => (
+                          <MenuItem
+                            onClick={() => this.closeSession(history)}
+                            className={classes.dropdownItem}
+                          >
+                            Cerrar sesión
+                          </MenuItem>
+                        )}
+                      />
                     </MenuList>
                   </ClickAwayListener>
                 </Paper>
