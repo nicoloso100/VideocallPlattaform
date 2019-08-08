@@ -71,6 +71,9 @@ class App extends React.Component {
     }
   };
   componentDidMount() {
+    if (!localStorage.getItem('example-jwt-jwt')) {
+      this.props.history.push('/login');
+    }
     if (navigator.platform.indexOf("Win") > -1) {
       ps = new PerfectScrollbar(this.mainPanel.current);
     }

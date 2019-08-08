@@ -17,6 +17,7 @@
   "author": "Inela Avdic Hukic",
   "license": "MIT",
   "dependencies": {
+<<<<<<< HEAD
     "bcrypt": "^3.0.6",
     "body-parser": "^1.18.3",
     "bookshelf": "^0.13.3",
@@ -33,6 +34,23 @@
     "passport-jwt": "latest",
     "pg": "^7.12.0",
     "socket.io": "^2.2.0"
+=======
+    "body-parser": "^1.18.3",
+    "cors": "^2.8.5",
+    "nodemailer": "^4.6.8",
+    "bcrypt": "^3.0.6",
+    "bookshelf": "^0.13.3",
+    "bookshelf-secure-password": "^3.0.1",
+    "concurrently": "^3.5.1",
+    "dotenv": "^5.0.1",
+    "express": "^4.16.3",
+    "jsonwebtoken": "^8.2.0",
+    "knex": "^0.14.4",
+    "node-gyp": "^5.0.3",
+    "passport": "^0.4.0",
+    "passport-jwt": "latest",
+    "pg": "^7.4.1"
+>>>>>>> origin/dev_sesion_token
   },
   "devDependencies": {
     "nodemon": "^1.19.1"

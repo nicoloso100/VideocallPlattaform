@@ -56,6 +56,8 @@ class AdminNavbarLinks extends React.Component {
   };
   handleCloseProfile = event => {
     if (this.anchorProfile.contains(event.target)) {
+      localStorage.removeItem('example-jwt-jwt');
+      this.props.history.push('/login');
       return;
     }
     this.setState({ openProfile: false });

@@ -18,4 +18,8 @@ const securePassword = require('bookshelf-secure-password');
 const db = bookshelf(knexDb);
 db.plugin(securePassword);
 
+<<<<<<< HEAD
 module.exports = db;
+=======
+module.exports = db;
+>>>>>>> origin/dev_sesion_token
