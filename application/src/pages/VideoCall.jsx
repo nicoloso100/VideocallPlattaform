@@ -1,14 +1,12 @@
 import React, { Component } from "react";
 import _ from "lodash";
-import socket from "../../utils/utilsVideoCall/socket";
-import PeerConnection from "../../utils/utilsVideoCall/PeerConnection";
-import MainWindow from "../../components/videoCall/MainWindow";
-import CallWindow from "../../components/videoCall/CallWindow";
-import CallModal from "../../components/videoCall/CallModal";
+import socket from "../utils/utilsVideoCall/socket";
+import PeerConnection from "../utils/utilsVideoCall/PeerConnection";
+import MainWindow from "components/videoCall/MainWindow";
+import CallWindow from "components/videoCall/CallWindow";
+import CallModal from "components/videoCall/CallModal";
 
-import "css/app.scss";
-
-export class VideoCall extends Component {
+class VideoCall extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -103,3 +101,5 @@ export class VideoCall extends Component {
     );
   }
 }
+
+export default VideoCall;

@@ -4,6 +4,7 @@
 	padding: 20px;
 	left: calc(50vw - 200px);
 	top: calc(50vh - 60px);
+	@include bg-gradient(to top, #074055 0%, #030D10 100%);
 	@include border-radius(5px);
 	text-align: center;
 	display: none;
@@ -20,10 +21,6 @@
 
 	span.caller {
 		color: $blue;
-	}
-
-	p {
-		font-size: 1.5em;
 	}
 }
 

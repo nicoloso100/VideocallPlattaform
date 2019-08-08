@@ -57,18 +57,6 @@
   fill: rgba(0, 0, 0, 0.4);
   line-height: 1;
 }
-html * {
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
-body {
-  background-color: #eeeeee;
-  color: #3c4858;
-  margin: 0;
-  font-family: Roboto, Helvetica, Arial, sans-serif;
-  font-weight: 300;
-  line-height: 1.5em;
-}
 
 blockquote footer:before,
 blockquote small:before {
@@ -111,15 +99,6 @@ h6 {
   font-weight: 500;
 }
 
-body {
-  background-color: #eeeeee;
-  color: #3c4858;
-}
-
-blockquote p {
-  font-style: italic;
-}
-
 body,
 h1,
 h2,
@@ -145,15 +124,6 @@ a:focus {
 
 legend {
   border-bottom: 0;
-}
-
-* {
-  -webkit-tap-highlight-color: rgba(255, 255, 255, 0);
-  -webkit-tap-highlight-color: transparent;
-}
-
-*:focus {
-  outline: 0;
 }
 
 a:focus,
@@ -219,11 +189,6 @@ footer ul li a:hover {
 }
 
 @media (max-width: 991px) {
-  body,
-  html {
-    position: relative;
-    overflow-x: hidden;
-  }
 
   #bodyClick {
     height: 100%;
@@ -505,7 +470,4 @@ footer ul li a:hover {
 .fixed-plugin.rtl-fixed-plugin .dropdown-menu {
   right: auto;
   left: 80px;
-}
-* {
-  letter-spacing: normal !important;
 }

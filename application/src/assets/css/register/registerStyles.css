@@ -1,0 +1,136 @@
+.WizardNoScroll {
+    overflow: hidden;
+  }
+  
+  .wizard-container {
+    display: flex;
+    flex-direction: column;
+    padding: 50px;
+  }
+  
+  .wizard-container h2 {
+    font-size: 1.3em;
+  }
+  
+  .wizard-container .wizard-subcont {
+    background-color: white;
+    padding: 30px;
+  }
+  
+  .wizard-container .wizard-tittle {
+    font-size: 1.5em;
+    text-align: center;
+  }
+  
+  .wizard-container .help-wizard-text {
+    text-align: center;
+  }
+  
+  .wizard-container .help-wizard-steps {
+    display: flex;
+    flex-direction: row;
+    padding: 10px;
+  }
+  
+  .wizard-container .help-wizard-steps .help-wizard-step img {
+    width: 100px;
+  }
+  
+  .wizard-container .help-wizard-steps .help-wizard-step {
+    flex: 1;
+    padding: 10px;
+  }
+  
+  .wizard-container .help-wizard-1-bottom {
+    display: flex;
+    width: 70%;
+    min-width: 240px;
+    justify-content: space-between;
+    margin: auto;
+  }
+  
+  .wizard-container .help-wizard-1-bottom .wizard-buttom-next,
+  .wizard-container .help-wizard-1-bottom .wizard-buttom-prev {
+    background-color: #2e4663;
+    width: 100px;
+    height: 40px;
+    border-radius: 5px;
+    margin: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    cursor: pointer;
+    transition-duration: 0.2s;
+  }
+  
+  .wizard-container .help-wizard-1-bottom .wizard-buttom-next:hover,
+  .wizard-container .help-wizard-1-bottom .wizard-buttom-prev:hover {
+    background-color: #3e5d81;
+  }
+  
+  .wizard-form-form {
+    width: 80%;
+    max-width: 500px;
+    margin: auto;
+    padding: 20px;
+  }
+  
+  .wizard-form-form .wizard-form-item {
+    width: 100%;
+    margin: 25px 0 25px 0;
+  }
+  
+  .wizard-contact-card {
+    width: 80%;
+    max-width: 800px;
+    margin: auto;
+  }
+  
+  .wizard-contact-btn-whatsapp {
+    display: flex;
+    width: 100px;
+    box-shadow: 0px 0px 7px -3px rgba(0, 0, 0, 0.75);
+    border-radius: 5px;
+    padding: 10px;
+    cursor: pointer;
+    transition-duration: 0.2s;
+  }
+  
+  .wizard-contact-btn-whatsapp:hover {
+    box-shadow: 0px 0px 7px -3px rgba(0, 0, 0, 0.25);
+  }
+  
+  .wizard-contact-img-whatsapp {
+    width: 40px;
+  }
+  
+  .wizard-contact-txt-whatsapp {
+    margin: auto;
+    color: #adadad;
+  }
+  
+  .wizard-contact-msg-whatsapp {
+    width: 100%;
+  }
+  
+  .wizard-finished-subtitle {
+    text-align: center;
+  }
+  
+  .wizard-finished-img-cont {
+    display: flex;
+  }
+  
+  .wizard-finished-img {
+    width: 90%;
+    max-width: 500px;
+    margin: auto;
+    transition-duration: 0.2s;
+    cursor: pointer;
+    box-shadow: 0px 0px 21px 0px rgba(0, 0, 0, 0.75);
+  }
+  
+  .wizard-finished-img:hover {
+    box-shadow: 0px 0px 21px 6px rgba(0, 0, 0, 0.75);
+  }

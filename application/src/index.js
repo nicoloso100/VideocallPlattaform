@@ -20,27 +20,30 @@ import ReactDOM from "react-dom";
 import { createBrowserHistory } from "history";
 import { Router, Route, Switch, Redirect } from "react-router-dom";
 import { NotificationContainer } from "react-notifications";
+
 import "assets/css/index.css";
+import "assets/css/login/loginStyles.css";
+import "assets/css/register/registerStyles.css";
+import "assets/css/videocall/videocall.scss";
+import "assets/css/application/material-dashboard-react.css?v=1.7.0";
 import "react-notifications/lib/notifications.css";
 
 // core components
 import App from "pages/app";
 import Login from "pages/login";
 import Register from "pages/register";
-
-import "assets/css/material-dashboard-react.css?v=1.7.0";
-import { VideoCall } from "views/VideoCall/VideoCall";
+import VideoCall from "pages/VideoCall";
 
 const hist = createBrowserHistory();
 
 ReactDOM.render(
   <Router history={hist}>
     <Switch>
-      {/* <Route path="/video" component={VideoCall} /> */}
       <Route path="/app" component={App} />
       <Route path="/ingreso" component={Login} />
       <Route path="/registro" component={Register} />
-      <Redirect from="/" to="/app" />
+      <Route path="/videollamada" component={VideoCall} />
+      <Redirect from="/" to="/ingreso" />
     </Switch>
     <NotificationContainer />
   </Router>,

@@ -18,7 +18,7 @@ class MainWindow extends Component {
     const { clientId } = this.props;
     document.title = `${clientId} - VideoCall`;
     return (
-      <div className="container main-window">
+      <div className="main-window">
         <div>
           <h3>
             Hi, your ID is

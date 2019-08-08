@@ -87,14 +87,12 @@ const cardHeaderStyle = {
     "& i,& .material-icons": {
       width: "33px",
       height: "33px",
-      textAlign: "center",
-      lineHeight: "33px"
+      textAlign: "center"
     },
     "& svg": {
       width: "24px",
       height: "24px",
       textAlign: "center",
-      lineHeight: "33px",
       margin: "5px 4px 0px"
     }
   },

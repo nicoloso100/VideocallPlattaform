@@ -34,8 +34,7 @@ const cardIconStyle = {
       marginTop: "-20px",
       marginRight: "15px",
       float: "left",
-      width: "100%",
-      height: "20px"
+      width: "100%"
     }
   },
   warningCardHeader,
