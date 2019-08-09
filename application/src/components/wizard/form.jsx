@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import TextField from "@material-ui/core/TextField";
 import { NotificationManager } from "react-notifications";
+import RequestLoader from "services/requestLoader";
 const axios = require("axios");
 
 class FormWizard extends Component {
@@ -21,23 +22,21 @@ class FormWizard extends Component {
     ) {
       if (email === emailConfirmacion) {
         NotificationManager.info("Enviando mensaje...");
-        axios
-          .post("http://localhost:5000/api/sendMail", {
-            email: email,
-            nombre: nombre,
-            telefono: telefono
-          })
-          .then(function (response) {
-            NotificationManager.success(
-              "Tus datos han sido enviados satisfactoriamente"
-            );
-            that.props.nextStep();
-          })
-          .catch(function (error) {
-            NotificationManager.error(
-              "Ha ocurrido un error al enviar el formulario"
-            );
-          });
+        let data = {
+          email: email,
+          nombre: nombre,
+          telefono: telefono
+        };
+        new RequestLoader().Post('http://localhost:5000/api/sendMail', data).then(res => {
+          NotificationManager.success(
+            "Tus datos han sido enviados satisfactoriamente"
+          );
+          that.props.nextStep();
+        }).catch(() => {
+          NotificationManager.error(
+            "Ha ocurrido un error al enviar el formulario"
+          );
+        });
       } else {
         NotificationManager.warning("Las direcciones de correo no coinciden");
       }

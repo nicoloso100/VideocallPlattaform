@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { Route } from "react-router-dom";
-import axios from 'axios';
+import RequestLoader from "services/requestLoader";
 
 class Login extends Component {
   constructor(props) {
@@ -29,17 +29,15 @@ class Login extends Component {
       password: this.state.password,
       email: this.state.email
     });
-    axios.post('http://localhost:5000/api/getToken/', data, {
-      headers: {
-        'Content-Type': 'application/json'
-      },
 
-    }).then(res => {
-      localStorage.setItem('example-jwt-jwt', res.data);
+    new RequestLoader().Post('http://localhost:5000/api/getToken/', data).then(res => {
+      localStorage.setItem('example-jwt-jwt', res);
       history.push("/app");
-    }).catch(() => this.setState({
-      error: true
-    }));
+    }).catch(() => {
+      this.setState({
+        error: true
+      })
+    });
   }
 
   render() {
