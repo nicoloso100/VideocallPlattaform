@@ -1,13 +1,14 @@
 import React, { Component } from "react";
 import { Route } from "react-router-dom";
 import RequestLoader from "services/requestLoader";
+import swal from 'sweetalert';
 
 class Login extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      email: 'admin',
-      password: 'admin',
+      email: '',
+      password: '',
       error: ''
     };
   }
@@ -29,6 +30,12 @@ class Login extends Component {
       password: this.state.password,
       email: this.state.email
     });
+    if(!this.state.email || !this.state.password){
+      swal("Algo anda mal", "Campos incompletos!", "error");
+      this.setState({error: true});
+      return;
+    }
+    
 
     new RequestLoader().Post('http://localhost:5000/api/getToken/', data).then(res => {
       localStorage.setItem('example-jwt-jwt', res);
