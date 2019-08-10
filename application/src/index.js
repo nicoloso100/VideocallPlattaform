@@ -33,7 +33,6 @@ import App from "pages/app";
 import Login from "pages/login";
 import Register from "pages/register";
 import VideoCall from "pages/VideoCall";
-import RequestLoader from "services/requestLoader";
 
 const hist = createBrowserHistory();
 

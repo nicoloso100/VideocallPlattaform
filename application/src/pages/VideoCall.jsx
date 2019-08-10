@@ -24,6 +24,14 @@ class VideoCall extends Component {
     this.rejectCallHandler = this.rejectCall.bind(this);
   }
 
+  componentWillMount() {
+    socket.open();
+  }
+
+  componentWillUnmount() {
+    socket.close();
+  }
+
   componentDidMount() {
     socket
       .on("init", data => {

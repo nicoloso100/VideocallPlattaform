@@ -2,7 +2,6 @@ import React, { Component } from "react";
 import TextField from "@material-ui/core/TextField";
 import { NotificationManager } from "react-notifications";
 import RequestLoader from "services/requestLoader";
-const axios = require("axios");
 
 class FormWizard extends Component {
   state = {
