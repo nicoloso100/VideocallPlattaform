@@ -1,21 +1,21 @@
 import React, { Component } from "react";
 import { Route } from "react-router-dom";
 import RequestLoader from "services/requestLoader";
-import swal from 'sweetalert';
+import swal from "sweetalert";
 
 class Login extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      email: '',
-      password: '',
-      error: ''
+      email: "",
+      password: "",
+      error: ""
     };
   }
 
   componentDidMount() {
-    if (localStorage.getItem('example-jwt-jwt')) {
-      this.props.history.push('/app');
+    if (localStorage.getItem("example-jwt-jwt")) {
+      this.props.history.push("/app");
     }
   }
 
@@ -30,21 +30,22 @@ class Login extends Component {
       password: this.state.password,
       email: this.state.email
     });
-    if(!this.state.email || !this.state.password){
+    if (!this.state.email || !this.state.password) {
       swal("Algo anda mal", "Campos incompletos!", "error");
-      this.setState({error: true});
+      this.setState({ error: true });
       return;
     }
-    
 
-    new RequestLoader().Post('http://localhost:5000/api/getToken/', data).then(res => {
-      localStorage.setItem('example-jwt-jwt', res);
-      history.push("/app");
-    }).catch(() => {
-      this.setState({
-        error: true
+    new RequestLoader()
+      .Post("http://localhost:5000/api/getToken/", data)
+      .then(res => {
+        localStorage.setItem("example-jwt-jwt", res);
+        history.push("/app");
       })
-    });
+      .catch(errMsg => {
+        swal("Algo anda mal", errMsg, "error");
+        this.setState({ error: true });
+      });
   }
 
   render() {
@@ -58,8 +59,18 @@ class Login extends Component {
           <div className="login-body">
             <div className="login-container">
               <div className="text-input-login-container">
-                <input type="text" placeholder="Usuario" name="email" onChange={e => this.change(e)} />
-                <input type="password" placeholder="Contraseña" name="password" onChange={e => this.change(e)} />
+                <input
+                  type="text"
+                  placeholder="Usuario"
+                  name="email"
+                  onChange={e => this.change(e)}
+                />
+                <input
+                  type="password"
+                  placeholder="Contraseña"
+                  name="password"
+                  onChange={e => this.change(e)}
+                />
               </div>
               <Route
                 render={({ history }) => (
@@ -68,7 +79,7 @@ class Login extends Component {
                     onClick={() => this.ingreso(history)}
                   >
                     Ingresar
-                </button>
+                  </button>
                 )}
               />
               <Route
@@ -80,7 +91,7 @@ class Login extends Component {
                     }}
                   >
                     Crear una cuenta en PsApp
-                </button>
+                  </button>
                 )}
               />
             </div>

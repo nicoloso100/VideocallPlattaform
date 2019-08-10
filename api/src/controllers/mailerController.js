@@ -28,9 +28,9 @@ exports.send_email = (req, res) => {
     </html>
     `
   };
-  transporter.sendMail(mailOptions, (error, info) => {
+  transporter.sendMail(mailOptions, error => {
     if (error) {
-      res.status(500).send("No se ha podido enviar el correo");
+      res.status(500).send("Ha ocurrido un error al enviar el formulario");
     } else {
       res.status(200).send("El correo se ha enviado satisfactoriamente");
     }

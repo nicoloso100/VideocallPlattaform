@@ -13,13 +13,16 @@ const app = express();
 app.use(passport.initialize());
 app.use(parser.json());
 app.use(
-    cors({
-        origin: "http://localhost:3000"
-    })
+  cors({
+    origin: "http://localhost:3000"
+  })
 );
 //app.use('/', express.static(`${process.cwd()}/../application/build`));
-app.use('/api', routes);
+app.use("/api", routes);
 
 var server = app.listen(5000);
+
+server.timeout = 10000;
+
 socket(server);
 console.log(`Server is listening at :${5000}`);
