@@ -1,11 +1,16 @@
 const users = {};
 var newId = 0;
 
-exports.create = (socket) => {
-  newId = newId + 1;
-  const id = newId.toString();
-  users[id] = socket;
-  return id;
+exports.create = socket => {
+  const id = "Nicolas angarita Ortiz";
+  let exists = true;
+  if (users[id]) {
+    exists = true;
+  } else {
+    exists = false;
+    users[id] = socket;
+  }
+  return { name: id, exists: exists };
 };
 
 exports.get = id => users[id];

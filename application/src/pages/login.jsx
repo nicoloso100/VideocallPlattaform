@@ -7,7 +7,7 @@ class Login extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      email: "",
+      username: "",
       password: "",
       error: ""
     };
@@ -27,11 +27,11 @@ class Login extends Component {
 
   ingreso(history) {
     let data = JSON.stringify({
-      password: this.state.password,
-      email: this.state.email
+      username: this.state.username,
+      password: this.state.password
     });
-    if (!this.state.email || !this.state.password) {
-      swal("Algo anda mal", "Campos incompletos!", "error");
+    if (!this.state.username || !this.state.password) {
+      swal("Cuidado!", "Tienes campos incompletos", "warning");
       this.setState({ error: true });
       return;
     }
@@ -62,7 +62,7 @@ class Login extends Component {
                 <input
                   type="text"
                   placeholder="Usuario"
-                  name="email"
+                  name="username"
                   onChange={e => this.change(e)}
                 />
                 <input

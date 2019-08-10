@@ -1,4 +1,3 @@
-const router = require("express").Router();
 const jwt = require("jsonwebtoken");
 const User = require("../models/user");
 
@@ -7,24 +6,25 @@ exports.get_user = (req, res) => {
 };
 
 exports.seed_user = (req, res) => {
-  if (!req.body.email || !req.body.password) {
+  if (!req.body.username || !req.body.password) {
     return res.status(500).send("Campos incompletos!");
   }
+  console.log(req.body);
   const user = new User({
-    email: req.body.email,
+    username: req.body.username,
     password: req.body.password
   });
-
+  console.log(user);
   user.save().then(() => {
     res.send("ok");
   });
 };
 
 exports.get_token = (req, res) => {
-  if (!req.body.email || !req.body.password) {
+  if (!req.body.username || !req.body.password) {
     return res.status(500).send("Campos incompletos!");
   }
-  User.forge({ email: req.body.email })
+  User.forge({ username: req.body.username })
     .fetch()
     .then(result => {
       if (!result) {
@@ -33,7 +33,7 @@ exports.get_token = (req, res) => {
       result
         .authenticate(req.body.password)
         .then(user => {
-          const payload = { id: user.id };
+          const payload = { username: user.username };
           const token = jwt.sign(payload, process.env.SECRET_OR_KEY);
           res.send(token);
         })

@@ -5,6 +5,7 @@ import PeerConnection from "../utils/utilsVideoCall/PeerConnection";
 import MainWindow from "components/videoCall/MainWindow";
 import CallWindow from "components/videoCall/CallWindow";
 import CallModal from "components/videoCall/CallModal";
+import swal from "sweetalert";
 
 class VideoCall extends Component {
   constructor(props) {
@@ -15,7 +16,8 @@ class VideoCall extends Component {
       callModal: "",
       callFrom: "",
       localSrc: null,
-      peerSrc: null
+      peerSrc: null,
+      sessionExists: null
     };
     this.pc = {};
     this.config = null;
@@ -35,7 +37,17 @@ class VideoCall extends Component {
   componentDidMount() {
     socket
       .on("init", data => {
-        this.setState({ clientId: data.id });
+        if (!data.id) {
+          swal("Atención!", "Ya tienes una sesión abierta", "warning").then(
+            () => {
+              window.close();
+            }
+          );
+          this.setState({ sessionExists: true });
+        } else {
+          this.setState({ sessionExists: false });
+          this.setState({ clientId: data.id });
+        }
       })
       .on("request", data =>
         this.setState({ callModal: "active", callFrom: data.from })
@@ -89,22 +101,30 @@ class VideoCall extends Component {
       peerSrc
     } = this.state;
     return (
-      <div>
-        <MainWindow clientId={clientId} startCall={this.startCallHandler} />
-        <CallWindow
-          status={callWindow}
-          localSrc={localSrc}
-          peerSrc={peerSrc}
-          config={this.config}
-          mediaDevice={this.pc.mediaDevice}
-          endCall={this.endCallHandler}
-        />
-        <CallModal
-          status={callModal}
-          startCall={this.startCallHandler}
-          rejectCall={this.rejectCallHandler}
-          callFrom={callFrom}
-        />
+      <div
+        style={{ backgroundColor: "black", width: "100wh", height: "100vh" }}
+      >
+        {this.state.sessionExists === false ? (
+          <React.Fragment>
+            <MainWindow clientId={clientId} startCall={this.startCallHandler} />
+            <CallWindow
+              status={callWindow}
+              localSrc={localSrc}
+              peerSrc={peerSrc}
+              config={this.config}
+              mediaDevice={this.pc.mediaDevice}
+              endCall={this.endCallHandler}
+            />
+            <CallModal
+              status={callModal}
+              startCall={this.startCallHandler}
+              rejectCall={this.rejectCallHandler}
+              callFrom={callFrom}
+            />
+          </React.Fragment>
+        ) : (
+          <div>nel</div>
+        )}
       </div>
     );
   }

@@ -1,7 +1,8 @@
-const db = require('../utils/database/databaseConfig');
+const db = require("../utils/database/databaseConfig");
 
 const User = db.Model.extend({
-  tableName: 'login_user',
+  idAttribute: false,
+  tableName: "client_users",
   hasSecurePassword: true
 });
 
