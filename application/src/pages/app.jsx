@@ -34,6 +34,7 @@ import dashboardStyle from "assets/jss/material-dashboard-react/layouts/dashboar
 
 import image from "assets/img/slideBar/sidebar.jpg";
 import logo from "assets/img/slideBar/reactlogo.png";
+import { isLogged } from "utils/localStore";
 
 let ps;
 
@@ -71,8 +72,8 @@ class App extends React.Component {
     }
   };
   componentDidMount() {
-    if (!localStorage.getItem('example-jwt-jwt')) {
-      this.props.history.push('/ingreso');
+    if (!isLogged()) {
+      this.props.history.push("/ingreso");
     }
     if (navigator.platform.indexOf("Win") > -1) {
       ps = new PerfectScrollbar(this.mainPanel.current);

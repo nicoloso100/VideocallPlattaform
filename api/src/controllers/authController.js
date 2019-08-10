@@ -9,12 +9,10 @@ exports.seed_user = (req, res) => {
   if (!req.body.username || !req.body.password) {
     return res.status(500).send("Campos incompletos!");
   }
-  console.log(req.body);
   const user = new User({
     username: req.body.username,
     password: req.body.password
   });
-  console.log(user);
   user.save().then(() => {
     res.send("ok");
   });
@@ -35,7 +33,7 @@ exports.get_token = (req, res) => {
         .then(user => {
           const payload = { username: user.username };
           const token = jwt.sign(payload, process.env.SECRET_OR_KEY);
-          res.send(token);
+          res.json({ token: token, user: req.body.username });
         })
         .catch(err => {
           return res.status(500).send("La contraseña es incorrecta");

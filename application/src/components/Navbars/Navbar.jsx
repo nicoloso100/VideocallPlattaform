@@ -31,13 +31,14 @@ import AdminNavbarLinks from "./AdminNavbarLinks.jsx";
 import Button from "components/CustomButtons/Button.jsx";
 
 import headerStyle from "assets/jss/material-dashboard-react/components/headerStyle.jsx";
+import { getLocaleName } from "utils/localStore.js";
 
 function Header({ ...props }) {
   function makeBrand() {
     var name;
     props.routes.map(prop => {
       if (window.location.href.indexOf(prop.layout + prop.path) !== -1) {
-        name = props.rtlActive ? prop.rtlName : prop.name;
+        name = `Bienvenido ${getLocaleName()}`;
       }
       return null;
     });
@@ -51,7 +52,6 @@ function Header({ ...props }) {
     <AppBar className={classes.appBar + appBarClasses}>
       <Toolbar className={classes.container}>
         <div className={classes.flex}>
-          {/* Here we create navbar brand, based on route name */}
           <Button color="transparent" href="#" className={classes.title}>
             {makeBrand()}
           </Button>

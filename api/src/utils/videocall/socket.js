@@ -5,7 +5,7 @@ function initSocket(socket) {
   let id;
   socket
     .on("init", () => {
-      let newUser = users.create(socket);
+      let newUser = users.create(socket, socket.handshake.query.user);
       if (!newUser.exists) {
         id = newUser.name;
       }

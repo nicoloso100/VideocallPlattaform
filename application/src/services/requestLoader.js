@@ -1,5 +1,6 @@
 import axios from "axios";
 import swal from "sweetalert";
+import { baseURL } from "utils/environment";
 
 export default function RequestLoader() {
   let config = {
@@ -14,29 +15,12 @@ export default function RequestLoader() {
     return new Promise((resolve, reject) => {
       this.loaderSpinner(div);
       axios
-        .post(URL, data, config)
+        .post(baseURL + URL, data, config)
         .then(res => {
           resolve(res.data);
         })
         .catch(err => {
-          if (err.response) {
-            if (err.response.status === 500) {
-              reject(err.response.data);
-            } else {
-              swal(
-                "Algo anda mal",
-                "Ha ocurrido un errror en la plataforma",
-                "error"
-              );
-              reject("Ha ocurrido un errror en la plataforma");
-            }
-          } else {
-            swal(
-              "Algo anda mal",
-              "Estamos presentando fallas, en unos minutos las solucionaremos!",
-              "error"
-            );
-          }
+          this.errorHandler(err, reject);
         })
         .finally(() => {
           document.body.removeChild(div);
@@ -48,17 +32,38 @@ export default function RequestLoader() {
     return new Promise((resolve, reject) => {
       this.loaderSpinner(div);
       axios
-        .get(URL, config)
+        .get(baseURL + URL, config)
         .then(res => {
           resolve(res.data);
         })
         .catch(err => {
-          reject(err);
+          this.errorHandler(err, reject);
         })
         .finally(() => {
           document.body.removeChild(div);
         });
     });
+  };
+
+  this.errorHandler = (err, reject) => {
+    if (err.response) {
+      if (err.response.status === 500) {
+        reject(err.response.data);
+      } else {
+        swal(
+          "Algo anda mal",
+          "Ha ocurrido un errror en la plataforma",
+          "error"
+        );
+        reject("Ha ocurrido un errror en la plataforma");
+      }
+    } else {
+      swal(
+        "Algo anda mal",
+        "Estamos presentando fallas, en unos minutos las solucionaremos!",
+        "error"
+      );
+    }
   };
 
   this.loaderSpinner = div => {

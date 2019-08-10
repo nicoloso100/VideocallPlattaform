@@ -1,15 +1,9 @@
-// Update with your config settings.
+const config = require("./utils/environment").knexConfig;
 
 module.exports = {
   development: {
     client: "pg",
-    connection: {
-      //host: '127.0.0.1',
-      host: "192.168.0.19",
-      user: "psapp",
-      password: "nicky246",
-      database: "psapp"
-    },
+    connection: config,
     pool: { min: 0, max: 50 }
   }
 };

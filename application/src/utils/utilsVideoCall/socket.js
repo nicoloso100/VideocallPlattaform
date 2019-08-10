@@ -1,6 +1,9 @@
 import io from "socket.io-client";
+import { socketURL } from "utils/environment";
+import { getLocaleName } from "utils/localStore";
 
-const socket = io("http://localhost:5000", {
+const socket = io(socketURL, {
+  query: `user=${getLocaleName()}`,
   autoConnect: false
 });
 

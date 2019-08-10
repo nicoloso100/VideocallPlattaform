@@ -1,8 +1,7 @@
 const users = {};
-var newId = 0;
 
-exports.create = socket => {
-  const id = "Nicolas angarita Ortiz";
+exports.create = (socket, user) => {
+  const id = user;
   let exists = true;
   if (users[id]) {
     exists = true;

@@ -27,7 +27,7 @@ class FormWizard extends Component {
           telefono: telefono
         };
         new RequestLoader()
-          .Post("http://localhost:5000/api/sendMail", data)
+          .Post("sendMail", data)
           .then(res => {
             NotificationManager.success(res);
             that.props.nextStep();

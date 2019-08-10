@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { Route } from "react-router-dom";
 import RequestLoader from "services/requestLoader";
 import swal from "sweetalert";
+import { isLogged, setLogged } from "utils/localStore";
 
 class Login extends Component {
   constructor(props) {
@@ -14,7 +15,7 @@ class Login extends Component {
   }
 
   componentDidMount() {
-    if (localStorage.getItem("example-jwt-jwt")) {
+    if (isLogged()) {
       this.props.history.push("/app");
     }
   }
@@ -37,9 +38,9 @@ class Login extends Component {
     }
 
     new RequestLoader()
-      .Post("http://localhost:5000/api/getToken/", data)
+      .Post("getToken", data)
       .then(res => {
-        localStorage.setItem("example-jwt-jwt", res);
+        setLogged(res);
         history.push("/app");
       })
       .catch(errMsg => {
@@ -74,24 +75,22 @@ class Login extends Component {
               </div>
               <Route
                 render={({ history }) => (
-                  <button
-                    className="login-buttons"
-                    onClick={() => this.ingreso(history)}
-                  >
-                    Ingresar
-                  </button>
-                )}
-              />
-              <Route
-                render={({ history }) => (
-                  <button
-                    className="login-buttons"
-                    onClick={() => {
-                      history.push("/registro");
-                    }}
-                  >
-                    Crear una cuenta en PsApp
-                  </button>
+                  <React.Fragment>
+                    <button
+                      className="login-buttons"
+                      onClick={() => this.ingreso(history)}
+                    >
+                      Ingresar
+                    </button>
+                    <button
+                      className="login-buttons"
+                      onClick={() => {
+                        history.push("/registro");
+                      }}
+                    >
+                      Crear una cuenta en PsApp
+                    </button>
+                  </React.Fragment>
                 )}
               />
             </div>

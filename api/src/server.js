@@ -7,16 +7,13 @@ var cors = require("cors");
 const socket = require("./utils/videocall/socket");
 const passport = require("./utils/authentication/passport");
 const routes = require("./routes");
+const corsConfig = require("./utils/environment").corsConfig;
 
 const app = express();
 
 app.use(passport.initialize());
 app.use(parser.json());
-app.use(
-  cors({
-    origin: "http://localhost:3000"
-  })
-);
+app.use(cors(corsConfig));
 //app.use('/', express.static(`${process.cwd()}/../application/build`));
 app.use("/api", routes);
 
