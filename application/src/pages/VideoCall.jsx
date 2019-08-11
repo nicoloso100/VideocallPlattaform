@@ -112,8 +112,7 @@ class VideoCall extends Component {
           backgroundRepeat: "no-repeat",
           backgroundAttachment: "fixed",
           backgroundSize: "cover",
-          backgroundColor: "#999",
-          opacity: "0.2"
+          backgroundColor: "#999"
         }}
       >
         {this.state.sessionExists === false ? (
