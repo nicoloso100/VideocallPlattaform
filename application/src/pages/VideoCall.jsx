@@ -1,11 +1,13 @@
 import React, { Component } from "react";
 import _ from "lodash";
-import socket from "../utils/utilsVideoCall/socket";
-import PeerConnection from "../utils/utilsVideoCall/PeerConnection";
+import socket from "utils/utilsVideoCall/socket";
+import PeerConnection from "utils/utilsVideoCall/PeerConnection";
 import MainWindow from "components/videoCall/MainWindow";
 import CallWindow from "components/videoCall/CallWindow";
 import CallModal from "components/videoCall/CallModal";
 import swal from "sweetalert";
+
+import background1 from "assets/img/videoCall/1.jpg";
 
 class VideoCall extends Component {
   constructor(props) {
@@ -102,7 +104,17 @@ class VideoCall extends Component {
     } = this.state;
     return (
       <div
-        style={{ backgroundColor: "black", width: "100wh", height: "100vh" }}
+        style={{
+          width: "100wh",
+          height: "100vh",
+          backgroundImage: `url(${background1}`,
+          backgroundPosition: "center center",
+          backgroundRepeat: "no-repeat",
+          backgroundAttachment: "fixed",
+          backgroundSize: "cover",
+          backgroundColor: "#999",
+          opacity: "0.2"
+        }}
       >
         {this.state.sessionExists === false ? (
           <React.Fragment>

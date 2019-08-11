@@ -25,6 +25,7 @@ import "assets/css/index.css";
 import "assets/css/login/loginStyles.css";
 import "assets/css/register/registerStyles.css";
 import "assets/css/videocall/videocall.scss";
+import "assets/css/videocall/startVideoCallStyles.css";
 import "assets/css/application/material-dashboard-react.css?v=1.7.0";
 import "react-notifications/lib/notifications.css";
 

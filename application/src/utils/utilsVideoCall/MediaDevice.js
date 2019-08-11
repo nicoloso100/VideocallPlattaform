@@ -1,5 +1,5 @@
-import _ from 'lodash';
-import Emitter from './Emitter';
+import _ from "lodash";
+import Emitter from "./Emitter";
 
 /**
  * Manage all media devices
@@ -11,22 +11,21 @@ class MediaDevice extends Emitter {
   start() {
     const constraints = {
       video: {
-        facingMode: 'user',
+        facingMode: "user",
         height: { min: 360, ideal: 720, max: 1080 }
       },
       audio: true
     };
 
-    console.log(navigator);
     navigator.mediaDevices
       .getUserMedia(constraints)
-      .then((stream) => {
+      .then(stream => {
         this.stream = stream;
-        this.emit('stream', stream);
+        this.emit("stream", stream);
       })
-      .catch((err) => {
+      .catch(err => {
         if (err instanceof DOMException) {
-          alert('Cannot open webcam and/or microphone');
+          alert("Cannot open webcam and/or microphone");
         } else {
           console.log(err);
         }
@@ -43,9 +42,9 @@ class MediaDevice extends Emitter {
   toggle(type, on) {
     const len = arguments.length;
     if (this.stream) {
-      this.stream[`get${type}Tracks`]().forEach((track) => {
+      this.stream[`get${type}Tracks`]().forEach(track => {
         const state = len === 2 ? on : !track.enabled;
-        _.set(track, 'enabled', state);
+        _.set(track, "enabled", state);
       });
     }
     return this;

@@ -1,5 +1,5 @@
-import React, { Component } from 'react';
-import PropTypes from 'proptypes';
+import React, { Component } from "react";
+import PropTypes from "proptypes";
 
 let friendID;
 
@@ -20,7 +20,7 @@ class MainWindow extends Component {
     return (
       <div className="main-window">
         <div>
-          <h3>
+          <h3 style={{ margin: "0" }}>
             Hi, your ID is
             <input
               type="text"
@@ -37,7 +37,7 @@ class MainWindow extends Component {
             className="txt-clientId"
             spellCheck={false}
             placeholder="Your friend ID"
-            onChange={event => friendID = event.target.value}
+            onChange={event => (friendID = event.target.value)}
           />
           <div>
             <button

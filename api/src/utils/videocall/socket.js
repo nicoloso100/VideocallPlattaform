@@ -34,7 +34,6 @@ function initSocket(socket) {
     .on("disconnect", () => {
       if (id !== undefined) {
         users.remove(id);
-        console.log(id, "disconnected");
       }
     });
 }

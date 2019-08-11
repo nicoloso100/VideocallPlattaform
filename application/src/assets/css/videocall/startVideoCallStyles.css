@@ -1,0 +1,15 @@
+.videoCallStartBtn {
+  padding: 15px;
+  width: 200px;
+  position: absolute;
+  border-radius: 5px;
+  text-align: center;
+  text-decoration: none;
+  color: white;
+  background-color: #516278;
+  transition-duration: 0.2s;
+}
+
+.videoCallStartBtn:hover {
+  box-shadow: 0px 0px 5px -1px rgba(0, 0, 0, 0.75);
+}
