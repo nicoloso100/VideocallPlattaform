@@ -1,8 +1,6 @@
 import React, { Component } from "react";
 import PropTypes from "proptypes";
 
-let friendID;
-
 class MainWindow extends Component {
   /**
    * Start the call with or without video
@@ -11,42 +9,42 @@ class MainWindow extends Component {
   callWithVideo(video) {
     const { startCall } = this.props;
     const config = { audio: true, video };
-    return () => startCall(true, friendID, config);
+    return () => startCall(true, config);
   }
 
   render() {
     const { clientId } = this.props;
+    console.log(this.props);
     document.title = `${clientId} - VideoCall`;
     return (
       <div className="main-window">
         <div>
-          <h3 style={{ margin: "0" }}>
-            Hi, your ID is
-            <input
-              type="text"
-              className="txt-clientId"
-              defaultValue={clientId}
-              readOnly
-            />
-          </h3>
-          <h4>Get started by calling a friend below</h4>
+          <h1 style={{ margin: "0", fontSize: "1em" }}>
+            {`Hola ${clientId} Estamos listos para iniciar la sesión de hoy`}
+          </h1>
+          <br />
+          <p style={{ fontSize: "0.7em", maxWidth: "500px" }}>
+            A continuación podrás seleccionar el modo de llamada, si lo
+            prefieres en video o solo voz, y te conectarás con{" "}
+            <strong style={{ textDecoration: "underline" }}>
+              {this.props.adminId}
+            </strong>
+            . Si cierras ésta ventana la llamada se terminará, pero podrás
+            volverla a abrir volviendo al presionar el botón de "Iniciar
+            llamada" en tu cuenta.
+          </p>
         </div>
         <div>
-          <input
-            type="text"
-            className="txt-clientId"
-            spellCheck={false}
-            placeholder="Your friend ID"
-            onChange={event => (friendID = event.target.value)}
-          />
           <div>
             <button
               type="button"
+              style={{ color: "white" }}
               className="btn-action fa fa-video-camera"
               onClick={this.callWithVideo(true)}
             />
             <button
               type="button"
+              style={{ color: "white" }}
               className="btn-action fa fa-phone"
               onClick={this.callWithVideo(false)}
             />

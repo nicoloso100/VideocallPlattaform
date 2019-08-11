@@ -1,16 +1,19 @@
 import MediaDevice from "./MediaDevice";
 import Emitter from "./Emitter";
-import socket from "./socket";
 
 const PC_CONFIG = { iceServers: [{ urls: ["stun:stun.l.google.com:19302"] }] };
+
+var socket;
 
 class PeerConnection extends Emitter {
   /**
    * Create a PeerConnection.
    * @param {String} friendID - ID of the friend you want to call.
    */
-  constructor(friendID) {
+
+  constructor(friendID, getSocket) {
     super();
+    socket = getSocket;
     this.pc = new RTCPeerConnection(PC_CONFIG);
     this.pc.onicecandidate = event =>
       socket.emit("call", {

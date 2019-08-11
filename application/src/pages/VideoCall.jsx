@@ -1,13 +1,23 @@
 import React, { Component } from "react";
 import _ from "lodash";
-import socket from "utils/utilsVideoCall/socket";
 import PeerConnection from "utils/utilsVideoCall/PeerConnection";
 import MainWindow from "components/videoCall/MainWindow";
 import CallWindow from "components/videoCall/CallWindow";
 import CallModal from "components/videoCall/CallModal";
 import swal from "sweetalert";
+import io from "socket.io-client";
+import { socketURL } from "utils/environment";
+import { getLocaleName } from "utils/localStore";
 
 import background1 from "assets/img/videoCall/1.jpg";
+import background2 from "assets/img/videoCall/2.jpg";
+import background3 from "assets/img/videoCall/3.jpg";
+import background4 from "assets/img/videoCall/4.jpg";
+import background5 from "assets/img/videoCall/5.jpg";
+import background6 from "assets/img/videoCall/6.jpg";
+import background7 from "assets/img/videoCall/7.jpg";
+
+var socket;
 
 class VideoCall extends Component {
   constructor(props) {
@@ -19,7 +29,9 @@ class VideoCall extends Component {
       callFrom: "",
       localSrc: null,
       peerSrc: null,
-      sessionExists: null
+      sessionExists: null,
+      backgroundImage: background1,
+      adminName: ""
     };
     this.pc = {};
     this.config = null;
@@ -29,7 +41,41 @@ class VideoCall extends Component {
   }
 
   componentWillMount() {
-    socket.open();
+    socket = io(socketURL, {
+      query: `user=${getLocaleName()}`
+    });
+    this.setState({
+      adminName: "nicoloso100"
+    });
+    var img = Math.floor(Math.random() * 7) + 1;
+    var selectedImg;
+    switch (img) {
+      case 1:
+        selectedImg = background1;
+        break;
+      case 2:
+        selectedImg = background2;
+        break;
+      case 3:
+        selectedImg = background3;
+        break;
+      case 4:
+        selectedImg = background4;
+        break;
+      case 5:
+        selectedImg = background5;
+        break;
+      case 6:
+        selectedImg = background6;
+        break;
+      case 7:
+        selectedImg = background7;
+        break;
+      default:
+        selectedImg = background1;
+        break;
+    }
+    this.setState({ backgroundImage: selectedImg });
   }
 
   componentWillUnmount() {
@@ -64,9 +110,9 @@ class VideoCall extends Component {
       .emit("init");
   }
 
-  startCall(isCaller, friendID, config) {
+  startCall(isCaller, config) {
     this.config = config;
-    this.pc = new PeerConnection(friendID)
+    this.pc = new PeerConnection(this.state.adminName, socket)
       .on("localStream", src => {
         const newState = { callWindow: "active", localSrc: src };
         if (!isCaller) newState.callModal = "";
@@ -107,7 +153,7 @@ class VideoCall extends Component {
         style={{
           width: "100wh",
           height: "100vh",
-          backgroundImage: `url(${background1}`,
+          backgroundImage: `url(${this.state.backgroundImage}`,
           backgroundPosition: "center center",
           backgroundRepeat: "no-repeat",
           backgroundAttachment: "fixed",
@@ -117,7 +163,11 @@ class VideoCall extends Component {
       >
         {this.state.sessionExists === false ? (
           <React.Fragment>
-            <MainWindow clientId={clientId} startCall={this.startCallHandler} />
+            <MainWindow
+              clientId={clientId}
+              adminId={this.state.adminName}
+              startCall={this.startCallHandler}
+            />
             <CallWindow
               status={callWindow}
               localSrc={localSrc}
@@ -133,9 +183,7 @@ class VideoCall extends Component {
               callFrom={callFrom}
             />
           </React.Fragment>
-        ) : (
-          <div>nel</div>
-        )}
+        ) : null}
       </div>
     );
   }

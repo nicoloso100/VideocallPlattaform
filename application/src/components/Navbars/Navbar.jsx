@@ -36,9 +36,13 @@ import { getLocaleName } from "utils/localStore.js";
 function Header({ ...props }) {
   function makeBrand() {
     var name;
-    props.routes.map(prop => {
+    props.routes.map((prop, index) => {
       if (window.location.href.indexOf(prop.layout + prop.path) !== -1) {
-        name = `Bienvenido ${getLocaleName()}`;
+        if (index === 0) {
+          name = `Bienvenido ${getLocaleName()}`;
+        } else {
+          name = prop.name;
+        }
       }
       return null;
     });
