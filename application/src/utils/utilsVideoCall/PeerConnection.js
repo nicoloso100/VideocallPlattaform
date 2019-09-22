@@ -1,22 +1,26 @@
-import MediaDevice from './MediaDevice';
-import Emitter from './Emitter';
-import socket from './socket';
+import MediaDevice from "./MediaDevice";
+import Emitter from "./Emitter";
 
-const PC_CONFIG = { iceServers: [{ urls: ['stun:stun.l.google.com:19302'] }] };
+const PC_CONFIG = { iceServers: [{ urls: ["stun:stun.l.google.com:19302"] }] };
+
+var socket;
 
 class PeerConnection extends Emitter {
   /**
-     * Create a PeerConnection.
-     * @param {String} friendID - ID of the friend you want to call.
-     */
-  constructor(friendID) {
+   * Create a PeerConnection.
+   * @param {String} friendID - ID of the friend you want to call.
+   */
+
+  constructor(friendID, getSocket) {
     super();
+    socket = getSocket;
     this.pc = new RTCPeerConnection(PC_CONFIG);
-    this.pc.onicecandidate = event => socket.emit('call', {
-      to: this.friendID,
-      candidate: event.candidate
-    });
-    this.pc.onaddstream = event => this.emit('peerStream', event.stream);
+    this.pc.onicecandidate = event =>
+      socket.emit("call", {
+        to: this.friendID,
+        candidate: event.candidate
+      });
+    this.pc.onaddstream = event => this.emit("peerStream", event.stream);
 
     this.mediaDevice = new MediaDevice();
     this.friendID = friendID;
@@ -29,10 +33,10 @@ class PeerConnection extends Emitter {
    */
   start(isCaller, config) {
     this.mediaDevice
-      .on('stream', (stream) => {
+      .on("stream", stream => {
         this.pc.addStream(stream);
-        this.emit('localStream', stream);
-        if (isCaller) socket.emit('request', { to: this.friendID });
+        this.emit("localStream", stream);
+        if (isCaller) socket.emit("request", { to: this.friendID });
         else this.createOffer();
       })
       .start(config);
@@ -45,7 +49,7 @@ class PeerConnection extends Emitter {
    * @param {Boolean} isStarter
    */
   stop(isStarter) {
-    if (isStarter) socket.emit('end', { to: this.friendID });
+    if (isStarter) socket.emit("end", { to: this.friendID });
     this.mediaDevice.stop();
     this.pc.close();
     this.pc = null;
@@ -54,14 +58,16 @@ class PeerConnection extends Emitter {
   }
 
   createOffer() {
-    this.pc.createOffer()
+    this.pc
+      .createOffer()
       .then(this.getDescription.bind(this))
       .catch(err => console.log(err));
     return this;
   }
 
   createAnswer() {
-    this.pc.createAnswer()
+    this.pc
+      .createAnswer()
       .then(this.getDescription.bind(this))
       .catch(err => console.log(err));
     return this;
@@ -69,7 +75,7 @@ class PeerConnection extends Emitter {
 
   getDescription(desc) {
     this.pc.setLocalDescription(desc);
-    socket.emit('call', { to: this.friendID, sdp: desc });
+    socket.emit("call", { to: this.friendID, sdp: desc });
     return this;
   }
 

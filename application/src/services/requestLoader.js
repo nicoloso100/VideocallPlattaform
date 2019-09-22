@@ -1,43 +1,72 @@
-import axios from 'axios';
+import axios from "axios";
+import swal from "sweetalert";
+import { baseURL } from "utils/environment";
 
 export default function RequestLoader() {
-
   let config = {
     headers: {
-      'Content-Type': 'application/json'
+      "Content-Type": "application/json"
     }
-  }
+  };
 
   const div = document.createElement("div");
 
-  this.Post = function (URL, data) {
+  this.Post = function(URL, data) {
     return new Promise((resolve, reject) => {
       this.loaderSpinner(div);
-      axios.post(URL, data, config).then(res => {
-        resolve(res.data);
-      }).catch(err => {
-        reject(err);
-      }).finally(() => {
-        document.body.removeChild(div)
-      });
+      axios
+        .post(baseURL + URL, data, config)
+        .then(res => {
+          resolve(res.data);
+        })
+        .catch(err => {
+          this.errorHandler(err, reject);
+        })
+        .finally(() => {
+          document.body.removeChild(div);
+        });
     });
-  }
+  };
 
-  this.Get = function (URL) {
+  this.Get = function(URL) {
     return new Promise((resolve, reject) => {
       this.loaderSpinner(div);
-      axios.get(URL, config).then(res => {
-        resolve(res.data);
-      }).catch(err => {
-        reject(err);
-      }).finally(() => {
-        document.body.removeChild(div)
-      });
+      axios
+        .get(baseURL + URL, config)
+        .then(res => {
+          resolve(res.data);
+        })
+        .catch(err => {
+          this.errorHandler(err, reject);
+        })
+        .finally(() => {
+          document.body.removeChild(div);
+        });
     });
-  }
+  };
 
+  this.errorHandler = (err, reject) => {
+    if (err.response) {
+      if (err.response.status === 500) {
+        reject(err.response.data);
+      } else {
+        swal(
+          "Algo anda mal",
+          "Ha ocurrido un errror en la plataforma",
+          "error"
+        );
+        reject("Ha ocurrido un errror en la plataforma");
+      }
+    } else {
+      swal(
+        "Algo anda mal",
+        "Estamos presentando fallas, en unos minutos las solucionaremos!",
+        "error"
+      );
+    }
+  };
 
-  this.loaderSpinner = (div) => {
+  this.loaderSpinner = div => {
     div.innerHTML = `
       <div class="lds-css ng-scope">
         <div class="lds-blocks" style="width:100%;height:100%">
@@ -110,5 +139,5 @@ export default function RequestLoader() {
     div.style.zIndex = "10";
     div.style.display = "flex";
     document.body.appendChild(div);
-  }
+  };
 }

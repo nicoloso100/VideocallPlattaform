@@ -5,7 +5,10 @@ function initSocket(socket) {
   let id;
   socket
     .on("init", () => {
-      id = users.create(socket);
+      let newUser = users.create(socket, socket.handshake.query.user);
+      if (!newUser.exists) {
+        id = newUser.name;
+      }
       socket.emit("init", { id });
     })
     .on("request", data => {
@@ -29,8 +32,9 @@ function initSocket(socket) {
       }
     })
     .on("disconnect", () => {
-      users.remove(id);
-      console.log(id, "disconnected");
+      if (id !== undefined) {
+        users.remove(id);
+      }
     });
 }
 

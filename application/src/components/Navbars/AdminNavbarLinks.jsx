@@ -36,6 +36,7 @@ import Notifications from "@material-ui/icons/Notifications";
 import Button from "components/CustomButtons/Button.jsx";
 import { Route } from "react-router-dom";
 import headerLinksStyle from "assets/jss/material-dashboard-react/components/headerLinksStyle.jsx";
+import { logOut } from "utils/localStore";
 
 class AdminNavbarLinks extends React.Component {
   state = {
@@ -59,9 +60,9 @@ class AdminNavbarLinks extends React.Component {
   };
 
   closeSession = history => {
-    localStorage.removeItem('example-jwt-jwt');
+    logOut();
     history.push("/ingreso");
-  }
+  };
 
   render() {
     const { classes } = this.props;
@@ -190,9 +191,7 @@ class AdminNavbarLinks extends React.Component {
                 <Paper>
                   <ClickAwayListener onClickAway={this.handleCloseProfile}>
                     <MenuList role="menu">
-                      <MenuItem
-                        className={classes.dropdownItem}
-                      >
+                      <MenuItem className={classes.dropdownItem}>
                         Configuración
                       </MenuItem>
                       <Divider light />
