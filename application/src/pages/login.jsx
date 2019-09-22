@@ -32,7 +32,7 @@ class Login extends Component {
     });
     if(!this.state.email || !this.state.password){
       swal("Algo anda mal", "Campos incompletos!", "error");
-      this.setState({error: true});
+      this.setState({error: 'Campos incompletos'});
       return;
     }
     
@@ -42,7 +42,7 @@ class Login extends Component {
       history.push("/app");
     }).catch(() => {
       this.setState({
-        error: true
+        error: 'Algo malo ocurrió con tu inicio de sesión, intenta más tarde.'
       })
     });
   }
@@ -53,7 +53,7 @@ class Login extends Component {
         <div className="section-login-container">
           <header className="login-header">
             <h1>PsApp</h1>
-            <p>{this.state.error}</p>
+           
           </header>
           <div className="login-body">
             <div className="login-container">
@@ -83,6 +83,9 @@ class Login extends Component {
                 </button>
                 )}
               />
+              <div>
+              
+              </div>
             </div>
           </div>
         </div>
